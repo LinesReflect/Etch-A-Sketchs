@@ -7,8 +7,12 @@ starButton.addEventListener("click", startDrawing);
 
 
 function startDrawing() {
-  let gridSize = parseInt(prompt("Choose a Size"));
+  let gridSize = parseInt(prompt("Choose a grid size between 16x16 and 64x64."));
+  if (gridSize > 64 || gridSize < 16) {
+    startDrawing()
+  }else {
   return createGrid(gridSize);
+  };
 };
 
 function createGrid(size) {
