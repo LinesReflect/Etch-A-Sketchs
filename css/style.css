@@ -29,5 +29,5 @@ body {
 
 .cell:hover {
     cursor: pointer;
-    background-color: #000;
+    background-color: #00000050;
 }
