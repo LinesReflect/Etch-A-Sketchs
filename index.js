@@ -1,9 +1,17 @@
 const gridContainer = document.querySelector(".grid-container");
 const squares = document.querySelector(".squares");
-const starButton = document.querySelector(".start-button");
+const startButton = document.querySelector(".start-button");
+const cells = document.querySelector("div");
+const ERASEBTN = document.querySelector(".erase-button")
+let pixels = [];
 
 
-starButton.addEventListener("click", startDrawing);
+
+let activated = false;
+
+
+startButton.addEventListener("click", startDrawing);
+ERASEBTN.addEventListener("click", eraseCanvas);
 
 
 function startDrawing() {
@@ -17,10 +25,25 @@ function startDrawing() {
 
 function createGrid(size) {
   for (let i = 1; i <= size * size; i++) {
-    const cell = document.createElement("div");
-    cell.classList.add("cell");
-    cell.style.width = `calc(100% / ${size})`;
-    cell.style.height = `calc(100% / ${size})`;
-    gridContainer.appendChild(cell);
+    let pixel = document.createElement("div");
+    pixel.classList.add("cell");
+    pixel.style.width = `calc(100% / ${size})`;
+    pixel.style.height = `calc(100% / ${size})`;
+    pixels.push(pixel)
+    pixel.value = i;
+    gridContainer.appendChild(pixel);
     };
-  };
+
+  pixels.forEach(px => px.addEventListener("dragenter", function() {changeToColor(px)}))
+};
+
+
+function changeToColor(square) {
+    square.style.backgroundColor = "orange";
+  return;
+};
+
+
+function eraseCanvas() {
+  pixels.forEach(px => px.style.backgroundColor = "#a59c90")
+};
