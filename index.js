@@ -85,16 +85,46 @@ function getColor() {
   }else if (sliderValue === 7) {
     COLORNAME.textContent = "Indigo"
     colorValue = "#4b0082"
-  }
-  else if (sliderValue === 8) {
+  }else if (sliderValue === 8) {
     COLORNAME.textContent = "Violet"
     colorValue = "#9B26B6"
   }else if (sliderValue === 9) {
+    COLORNAME.textContent = "Random"
+    colorValue = createRandomColor()
+  }else if (sliderValue === 10) {
     COLORNAME.textContent = "Eraser"
     colorValue = "#a59c90"
   }
 
   return colorValue;
+};
+
+
+function createRandomColor() {
+  let randomNumber = Math.floor(Math.random(9) * 9)
+  console.log(randomNumber)
+  let randomColor;
+  if (randomNumber === 0) {
+    randomColor = "#000000"
+  }else if (randomNumber === 1) {
+    randomColor = "#ffffff"
+  }else if (randomNumber === 2) {
+    randomColor = "#ff0000"
+  }else if (randomNumber === 3) {
+    randomColor = "#ffa500"
+  }else if (randomNumber === 4) {
+    randomColor = "#ffff00"
+  }else if (randomNumber === 5) {
+    randomColor = "#0000ff"
+  }else if (randomNumber === 6) {
+    randomColor = "#008000"
+  }else if (randomNumber === 7) {
+    randomColor = "#4b0082"
+  }else if (randomNumber === 8) {
+    randomColor = "#9B26B6"
+  }
+  
+  return randomColor;
 };
 
 
