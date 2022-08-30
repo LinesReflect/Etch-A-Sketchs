@@ -3,8 +3,10 @@ const squares = document.querySelector(".squares");
 const startButton = document.querySelector(".start-button");
 const cells = document.querySelector("div");
 const ERASEBTN = document.querySelector(".erase-button");
-const COLORSLIDER = document.querySelector("#my-color")
-const COLORNAME = document.querySelector(".color-name")
+const GRIDSIZESLIDER = document.querySelector("#my-size");
+const SIZEDISPLAY = document.querySelector(".grid-size-display");
+const COLORSLIDER = document.querySelector("#my-color");
+const COLORNAME = document.querySelector(".color-name");
 let pixels = [];
 let emptyCanvas = true
 
@@ -12,18 +14,32 @@ let emptyCanvas = true
 
 let activated = false;
 
-
+document.addEventListener("DOMContentLoaded", getGridSizeSlider)
+document.addEventListener("DOMContentLoaded", getColor)
+document.addEventListener("DOMContentLoaded", startDrawing)
 startButton.addEventListener("click", startDrawing);
 ERASEBTN.addEventListener("click", eraseCanvas);
 
 
+function getGridSizeSlider() {
+  let size;
+  if (parseInt(GRIDSIZESLIDER.value) === 0) {
+    SIZEDISPLAY.textContent = "16x16"
+    size = 16;
+  }else if (parseInt(GRIDSIZESLIDER.value) === 1) {
+    SIZEDISPLAY.textContent = "32x32"
+    size = 32;
+  }else if (parseInt(GRIDSIZESLIDER.value) === 2) {
+    SIZEDISPLAY.textContent = "64x64"
+    size = 64;
+  }
+  return size;
+};
+
+
 function startDrawing() {
-  let gridSize = parseInt(prompt("Choose a grid size between 16x16 and 64x64."));
-  if (gridSize > 64 || gridSize < 16) {
-    startDrawing();
-  }else {
+  let gridSize = getGridSizeSlider()
   return createGrid(gridSize);
-  };
 };
 
 function createGrid(size) {
@@ -49,6 +65,7 @@ function createGrid(size) {
 
     
   getColor()
+  GRIDSIZESLIDER.addEventListener("mousemove", getGridSizeSlider)
   COLORSLIDER.addEventListener("mousemove", getColor)
   pixels.forEach(px => px.addEventListener("dragenter", function() {changeToColor(px)}));
 };
