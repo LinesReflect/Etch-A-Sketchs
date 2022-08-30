@@ -6,6 +6,7 @@ const ERASEBTN = document.querySelector(".erase-button");
 const COLORSLIDER = document.querySelector("#my-color")
 const COLORNAME = document.querySelector(".color-name")
 let pixels = [];
+let emptyCanvas = true
 
 
 
@@ -26,6 +27,13 @@ function startDrawing() {
 };
 
 function createGrid(size) {
+  if (emptyCanvas === false) {
+    for (i = pixels.length; i > 0; i--) {
+      gridContainer.removeChild(gridContainer.children[0]);
+      pixels.pop()
+    }
+  }
+
   for (let i = 1; i <= size * size; i++) {
     let pixel = document.createElement("div");
     pixel.classList.add("cell");
@@ -35,8 +43,12 @@ function createGrid(size) {
     pixel.value = i;
     gridContainer.appendChild(pixel);
     };
-  
-    getColor()
+
+
+  emptyCanvas = false
+
+    
+  getColor()
   COLORSLIDER.addEventListener("mousemove", getColor)
   pixels.forEach(px => px.addEventListener("dragenter", function() {changeToColor(px)}));
 };
@@ -44,7 +56,6 @@ function createGrid(size) {
 
 function changeToColor(square) {
   let color = getColor()
-  console.log(color)
   let red = "#ff0000"
   square.style.backgroundColor = color;
   return;
@@ -101,8 +112,7 @@ function getColor() {
 
 
 function createRandomColor() {
-  let randomNumber = Math.floor(Math.random(9) * 9)
-  console.log(randomNumber)
+  let randomNumber = Math.floor(Math.random() * 9)
   let randomColor;
   if (randomNumber === 0) {
     randomColor = "#000000"
@@ -126,5 +136,3 @@ function createRandomColor() {
   
   return randomColor;
 };
-
-
