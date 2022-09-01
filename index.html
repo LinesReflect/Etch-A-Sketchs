@@ -9,27 +9,60 @@
 
     <body>
 
-        <div class="grid-container" oncontextmenu="return false;">
 
+        <div class="header"></div>
+
+
+        <div class="container">
+
+
+            <h1 class="title">Etch-A-Sketch</h1>
+
+            <div class="grid-container" oncontextmenu="return false;">
+
+            </div>
+
+
+            <div class="grid-settings">
+                <div class="grid-size-slide-container">
+                    <div class="grid-size-text">
+                        <p>Grid Size: </p>
+                        <p class="grid-size-display"></p>
+                    </div>
+                    <input type="range" min="0" max="2" value="0" class="slider" id="my-size">
+                    <button class="start-button">New Canvas</button>
+                </div>
+
+
+                <div class="draw-instructions">
+                    <p>* Click and drag to draw! *</p>
+                </div>
+
+
+                <div class="color-slide-container">
+                    <div class="color-slide-text">
+                        <p>Pen Color: </p>
+                        <p class="color-name"></p>
+                        <div class="color-square"></div>
+                    </div>
+                    <input type="range" min="0" max="10" value="0" class="slider" id="my-color">
+                    <button class="erase-button">Erase All</button>
+                </div>
+            </div>
         </div>
 
 
-        <button class="start-button">Click here to create a new canvas!</button>
-
-
-        <div class="color-slide-container">
-            <p class="color-name"></p>
-            <input type="range" min="0" max="10" value="0" class="slider" id="my-color">
+        <div class="footer">
+            <div class="github">
+                <p class="lines-reflect"><a href="https://github.com/LinesReflect/Etch-A-Sketchs">Lines Reflect</a></p>
+                <a href="https://github.com/LinesReflect/Etch-A-Sketchs"><img class="github-logo"src="images/GitHub-Mark-Light-64px.png" alt="github logo"></a>
+            </div>
         </div>
 
 
-        <div class="grid-size-slide-container">
-            <p class="grid-size-display"></p>
-            <input type="range" min="0" max="2" value="0" class="slider" id="my-size">
-        </div>
 
 
-        <button class="erase-button">Erase All</button>
+
 
     </body>
 

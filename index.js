@@ -7,11 +7,10 @@ const GRIDSIZESLIDER = document.querySelector("#my-size");
 const SIZEDISPLAY = document.querySelector(".grid-size-display");
 const COLORSLIDER = document.querySelector("#my-color");
 const COLORNAME = document.querySelector(".color-name");
+const COLORSQUARE = document.querySelector(".color-square");
+
 let pixels = [];
 let emptyCanvas = true
-
-
-
 let activated = false;
 
 document.addEventListener("DOMContentLoaded", getGridSizeSlider)
@@ -123,6 +122,8 @@ function getColor() {
     COLORNAME.textContent = "Eraser"
     colorValue = "#a59c90"
   }
+
+  COLORSQUARE.style.backgroundColor = colorValue;
 
   return colorValue;
 };
